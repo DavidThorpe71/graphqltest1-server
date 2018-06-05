@@ -24,8 +24,6 @@ const testResolvers = {
 
 const resolvers = merge(testResolvers, ResolutionsResolvers)
 
-console.log(resolvers)
-
 const schema = makeExecutableSchema({
   typeDefs,
   resolvers

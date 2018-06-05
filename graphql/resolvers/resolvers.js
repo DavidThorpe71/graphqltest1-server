@@ -1,5 +1,6 @@
 
 import Resolutions from '../../database/models/resolutions';
+import { CLIENT_RENEG_LIMIT } from 'tls';
 
 // These two lines added a test resolution to the database
 // const testResolution = new Resolutions({ _id: '56785695', name: 'Tester' });
@@ -15,6 +16,13 @@ export default {
         }).catch(() => {
           throw error;
         });
+    }
+  },
+  Mutation: {
+    createResolution() {
+      console.log('GotHERE!');
+      // const testResolution = new Resolutions({ _id: '4353367', name: 'Tester2' });
+      // testResolution.save();
     }
   }
 };
