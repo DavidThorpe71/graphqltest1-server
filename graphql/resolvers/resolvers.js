@@ -1,17 +1,16 @@
-const resolvers = {
+export default {
   Query: {
-    hi() {
-      return "Hello WORLDLSL!"
-    },
-    users() {
+    resolutions() {
       return [
         {
-          _id: "dagflglfhjm",
-          name: "Davey T"
-        }
+          _id: "jfhsghfgf",
+          name: "Test this resolution"
+        },
+        {
+          _id: "erwtrtwtyhy",
+          name: "What another resolution?"
+        },
       ]
     }
   }
-}
-
-export default resolvers;
+};

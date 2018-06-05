@@ -9,7 +9,7 @@ import bodyParser from 'body-parser';
 import ENV from './config/env';
 import mongoose from 'mongoose';
 import winston from 'winston';
-import schema from './graphql';
+import schema from './graphql/register-api';
 
 const app = express();
 
