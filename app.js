@@ -2,25 +2,20 @@ import 'babel-register';
 import 'babel-polyfill';
 import express from 'express'
 import express_graphql from 'express-graphql';
+import mongoose from 'mongoose'
 import logger from 'morgan';
 import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import ENV from './config/env';
-import mongoose from 'mongoose';
 import winston from 'winston';
 import schema from './graphql/register-api';
+import loadModels from './database/models/index';
+import connect from './database/connect';
 
 const app = express();
 
-const db = process.env.MONGODB_URI || 'mongodb://localhost/graphql-test1';
-
-mongoose.connect(db)
-  .then(() => {
-    console.log('MongoDB is connected to the database', db);
-  }).catch((error) => {
-    throw error;
-  })
+connect()
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

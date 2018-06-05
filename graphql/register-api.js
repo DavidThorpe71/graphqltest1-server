@@ -14,7 +14,7 @@ type Query {
 
 const typeDefs = [testSchema, ResolutionsSchema];
 
-const resolver = {
+const testResolvers = {
   Query: {
     hi() {
       return "Hello WORLD!!!!"
@@ -22,7 +22,7 @@ const resolver = {
   }
 };
 
-const resolvers = merge(resolver, ResolutionsResolvers)
+const resolvers = merge(testResolvers, ResolutionsResolvers)
 
 console.log(resolvers)
 
