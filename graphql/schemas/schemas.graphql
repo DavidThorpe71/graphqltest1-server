@@ -1,0 +1,28 @@
+# name
+# createdAt
+# [todoId]
+
+type Query {
+  # Use the name of the resolver here
+  resolutions: [Resolution]
+  users: [User]
+}
+
+type Resolution {
+  _id: String!
+  name: String!
+}
+
+type User {
+  _id: String!
+  firstName: String!
+  lastName: String!
+  dob: String!
+  height: String!
+}
+
+type Mutation {
+  # Use the name of the mutation from resolver
+  createResolution(name: String!): Resolution
+  createUser: User
+}
