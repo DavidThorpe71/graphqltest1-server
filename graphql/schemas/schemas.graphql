@@ -15,14 +15,13 @@ type Resolution {
 
 type User {
   _id: String!
-  firstName: String!
-  lastName: String!
-  dob: String!
-  height: String!
+  username: String!
+  password: String!
+  email: String!
 }
 
 type Mutation {
   # Use the name of the mutation from resolver
   createResolution(name: String!): Resolution
-  createUser: User
+  createUser(name: String!, password: String!, email: String!): User
 }

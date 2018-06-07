@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import timestamps from 'mongoose-timestamp';
 
-const resolutionsSchema = new mongoose.Schema({
+const resolutionSchema = new mongoose.Schema({
   _id: {
     type: String,
     required: true
@@ -12,4 +12,4 @@ const resolutionsSchema = new mongoose.Schema({
   }
 });
 
-export default mongoose.model('Resolutions', resolutionsSchema);
+export default mongoose.model('Resolutions', resolutionSchema);

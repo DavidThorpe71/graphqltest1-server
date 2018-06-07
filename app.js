@@ -12,6 +12,8 @@ import winston from 'winston';
 import schema from './graphql/register-api';
 import loadModels from './database/models/index';
 import connect from './database/connect';
+import expressValidator from 'express-validator';
+import './database/passport';
 
 const app = express();
 
@@ -22,6 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride());
 app.use(cookieParser());
+app.use(expressValidator());
 
 const debug = require('debug')('datazone:server');
 const http = require('http');

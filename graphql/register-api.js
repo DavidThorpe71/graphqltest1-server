@@ -8,7 +8,7 @@ import ResolutionsResolver from './resolvers/ResolutionsResolver';
 import UsersResolver from './resolvers/UsersResolver';
 
 //You may need to make a change here to prompt server to rebuild
-//tt
+//t
 const resolvers = merge([ResolutionsResolver, UsersResolver]);
 
 const schema = makeExecutableSchema({
