@@ -15,7 +15,7 @@ type Resolution {
 
 type User {
   _id: String!
-  username: String!
+  name: String!
   password: String!
   email: String!
 }

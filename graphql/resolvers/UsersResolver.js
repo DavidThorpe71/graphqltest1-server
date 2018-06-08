@@ -23,12 +23,13 @@ export default {
       const user = new User({ email, name })
       await User.register(user, password);
       passport.authenticate('local', {
-        failureRedirect: '/',
+        failureRedirect: '/login',
         failureFlash: 'Failed Login!',
         successRedirect: '/',
         successFlash: 'You are now logged in!'
       })
-      console.log('User registered successfully!');
+      console.log('user', user);
+      return { _id: user._id, name: user.name, email: user.email }
     }
   }
 };

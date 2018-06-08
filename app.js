@@ -1,12 +1,15 @@
 import 'babel-register';
 import 'babel-polyfill';
 import express from 'express'
-import express_graphql from 'express-graphql';
+import graphqlHTTP from 'express-graphql';
+import session from 'express-session';
+import passport from 'passport';
 import mongoose from 'mongoose'
 import logger from 'morgan';
 import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import uuid from 'node-uuid';
 import ENV from './config/env';
 import winston from 'winston';
 import schema from './graphql/register-api';
@@ -25,6 +28,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride());
 app.use(cookieParser());
 app.use(expressValidator());
+app.use(session({
+  genid: function (req) {
+    return uuid.v4();
+  },
+  secret: 'HELLOTHEREDAVEYT',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { sercure: true }
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 const debug = require('debug')('datazone:server');
 const http = require('http');
@@ -75,7 +90,7 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-app.use('/graphql', express_graphql({
+app.use('/graphql', graphqlHTTP({
   schema,
   graphiql: true,
   pretty: true
