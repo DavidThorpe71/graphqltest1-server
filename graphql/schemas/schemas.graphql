@@ -23,5 +23,7 @@ type User {
 type Mutation {
   # Use the name of the mutation from resolver
   createResolution(name: String!): Resolution
-  createUser(name: String!, password: String!, email: String!): User
+  createUser(name: String!, password: String!, email: String!): User!
+  login(email: String!, password: String!): String!
+  logout(user: String): String!
 }

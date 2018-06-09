@@ -19,7 +19,7 @@ export default {
     }
   },
   Mutation: {
-    async createUser(obj, { name, password, email }, context) {
+    createUser: async (obj, { name, password, email }, context) => {
       const user = new User({ email, name })
       await User.register(user, password);
       passport.authenticate('local', {
@@ -28,8 +28,24 @@ export default {
         successRedirect: '/',
         successFlash: 'You are now logged in!'
       })
-      console.log('user', user);
-      return { _id: user._id, name: user.name, email: user.email }
+      return user;
+    },
+    login: async (obj, { email, password }, context) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new Error('No user with that email address');
+      }
+      passport.authenticate('local', {
+        failureRedirect: '/login',
+        failureFlash: 'Failed login !',
+        successRedirect: '/',
+        successFlash: 'You are now logged in'
+      })
+    },
+    logout: (obj, args, context) => {
+      context.req.logout();
+      console.log('success')
     }
+
   }
 };
